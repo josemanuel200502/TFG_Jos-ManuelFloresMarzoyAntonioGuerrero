@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/app">
+
+    <!-- Encabezado con logo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="157dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="392dp"
+            android:layout_height="124dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/buildyourbd" />
+    </LinearLayout>
+
+    <!-- Video de YouTube en WebView -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <WebView
+            android:id="@+id/youtubeWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <!-- Botones debajo del video -->
+    <GridLayout
+        android:id="@+id/gridBotones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:alignmentMode="alignMargins"
+        android:padding="16dp"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/boton1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Entrenamientos"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+
+        <Button
+            android:id="@+id/boton2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Recetas"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+
+        <Button
+            android:id="@+id/boton3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Comunidad"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+
+        <Button
+            android:id="@+id/boton4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Recordatorios"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+
+        <Button
+            android:id="@+id/boton5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Alimentos(Tracker)"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+
+        <Button
+            android:id="@+id/boton6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Encuentra tu Gym"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/azul_cielo" />
+    </GridLayout>
+
+    <!-- Barra inferior -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/azul"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/botonInicio"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/ic_inicio"
+            android:contentDescription="inicio" />
+
+        <ImageButton
+            android:id="@+id/botonAjustes"
+            android:layout_width="55dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="40dp"
+            android:contentDescription="settings"
+            android:background="@drawable/ic_settings" />
+    </LinearLayout>
+</LinearLayout>
