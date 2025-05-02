@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#87CEEB">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Imagen -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/entrenamiento_icon"
+            android:contentDescription="Icono entrenamiento"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrenamientos"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:paddingBottom="4dp" />
+
+        <!-- Subtítulo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rutinas recomendadas para ti"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:paddingBottom="24dp" />
+
+        <!-- Rutinas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cardio básico"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:drawableStart="@android:drawable/arrow_down_float"
+            android:drawablePadding="12dp"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:contentDescription="Entrenamiento Cardio básico" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fuerza en casa"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:drawableStart="@android:drawable/arrow_down_float"
+            android:drawablePadding="12dp"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:contentDescription="Entrenamiento Fuerza en casa" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estiramientos"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:drawableStart="@android:drawable/arrow_down_float"
+            android:drawablePadding="12dp"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:contentDescription="Entrenamiento Estiramientos" />
+
+        <!-- Progreso -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Progreso: 2/3 completados"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="66"
+            android:max="100"
+            android:progressTint="#1976D2"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Botón iniciar -->
+        <Button
+            android:id="@+id/btnIniciarEntrenamiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar entrenamiento"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_button" />
+
+        <!-- Botón volver -->
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:background="@drawable/rounded_button" />
+    </LinearLayout>
+</ScrollView>
