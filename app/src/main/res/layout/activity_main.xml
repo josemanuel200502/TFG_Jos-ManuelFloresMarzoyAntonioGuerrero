@@ -6,7 +6,7 @@
     android:background="@color/verde1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".MainActivity"
     android:paddingTop="70dp"
     android:orientation="vertical"
     android:backgroundTint="@color/azul_cielo">
@@ -89,7 +89,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/entrarButton"
-            app:layout_constraintVertical_bias="0.076" />
+            app:layout_constraintVertical_bias="0.06" />
 
         <Button
             android:id="@+id/invitadoButton"
@@ -197,15 +197,14 @@
 
         <TextView
             android:id="@+id/registro"
-            android:layout_width="193dp"
-            android:layout_height="28dp"
+            android:layout_width="192dp"
+            android:layout_height="19dp"
             android:text="¿No tienes cuenta? Regístrate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.723" />
+            app:layout_constraintVertical_bias="0.715" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
