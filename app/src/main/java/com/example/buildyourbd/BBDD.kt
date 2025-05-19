@@ -1,4 +1,8 @@
 package com.example.buildyourbd
 
-class BBDD {
+import android.content.Context
+
+class BBDD (val context: Context){
+
+
 }

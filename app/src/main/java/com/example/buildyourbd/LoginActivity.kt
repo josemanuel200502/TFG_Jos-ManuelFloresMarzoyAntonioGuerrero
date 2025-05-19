@@ -1,6 +1,5 @@
 package com.example.buildyourbd
 
-package com.example.esencias
 
 import android.app.Activity
 import android.content.Intent
@@ -24,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
 
-        setContentView(R.layout.login_activity)
+        setContentView(R.layout.activity_main)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -39,11 +38,11 @@ class LoginActivity : AppCompatActivity() {
 
         // Click listeners
         registro.setOnClickListener {
-            abrirActivity(RegisterActivity::class.java)
+            //abrirActivity(RegisterActivity::class.java)
         }
-        invitado.setOnClickListener{
-            abrirActivity(AppActivityInvitado::class.java)
-        }
+        //invitado.setOnClickListener{
+            //abrirActivity(AppActivityInvitado::class.java)
+        //}
 
         inicio.setOnClickListener{
             iniciarSesion()
@@ -60,22 +59,21 @@ class LoginActivity : AppCompatActivity() {
         val pass=findViewById<EditText>(R.id.loginPass).text.toString()
         val bd=BBDD(this)
 
-        nombre=bd.encontrarUsuario(nombre)
+        //nombre=bd.encontrarUsuario(nombre)
 
         if(nombre!=null){
-            val quienEs=bd.verificarUsuario(nombre,pass)
-            if(quienEs[0]){
-                if(quienEs[1]){
-                    val intent = Intent(this, ActivityEsencias::class.java)
+            //val quienEs=bd.verificarUsuario(nombre,pass)
+            //if(quienEs[0]){
+              //  if(quienEs[1]){
                     intent.putExtra("fragmento","MenuAdministrador")
                     startActivity(intent)
                 }else
                     abrirActivity(AppActivity::class.java)
-            }else{
+            //}else{
                 Toast.makeText(this,"Contraseña incorrecta...",Toast.LENGTH_LONG).show()
             }
-        }else{
-            Toast.makeText(this,"Usuario no encontrado",Toast.LENGTH_LONG).show()
+        //}else{
+            //Toast.makeText(this,"Usuario no encontrado",Toast.LENGTH_LONG).show()
         }
-    }
-}
+    //}
+//}

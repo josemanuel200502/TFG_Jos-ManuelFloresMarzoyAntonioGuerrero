@@ -6,18 +6,19 @@
     android:background="@color/verde1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".MainActivity"
     android:paddingTop="70dp"
     android:orientation="vertical"
     android:backgroundTint="@color/azul_cielo">
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="405dp"
-        android:layout_height="88dp"
+        android:layout_width="500dp"
+        android:layout_height="127dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/buildyourbd" />
@@ -25,14 +26,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="415dp"
-        android:layout_height="684dp"
+        android:layout_height="510dp"
         android:background="@drawable/border_radius"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView4"
-        android:backgroundTint="@color/white">
+        app:layout_constraintTop_toBottomOf="@id/imageView4">
 
         <TextView
             android:id="@+id/textView3"
@@ -65,9 +66,9 @@
             android:id="@+id/entrarButton"
             android:layout_width="151dp"
             android:layout_height="47dp"
+            android:backgroundTint="@color/azul_cielo"
             android:text="Entrar"
             android:textSize="20sp"
-            android:backgroundTint="@color/azul_cielo"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,25 +77,11 @@
             app:layout_constraintVertical_bias="0.576" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/white"
-            android:elevation="6dp"
-            android:text="Google >"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/entrarButton"
-            app:layout_constraintVertical_bias="0.076" />
-
-        <Button
             android:id="@+id/invitadoButton"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:layout_marginTop="76dp"
+            android:backgroundTint="@color/azul_cielo"
             android:text="Invitado"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -102,8 +89,7 @@
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.85"
-            android:backgroundTint="@color/azul_cielo"/>
+            app:layout_constraintVertical_bias="0.85" />
 
         <TextView
             android:id="@+id/textView4"
@@ -140,8 +126,8 @@
                 android:id="@+id/imageView2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/lock"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:src="@drawable/lock" />
 
             <EditText
                 android:id="@+id/loginPass"
@@ -153,7 +139,7 @@
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -177,8 +163,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/email"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:src="@drawable/email" />
 
             <EditText
                 android:id="@+id/loginEmail"
@@ -190,21 +176,20 @@
                 android:inputType="textEmailAddress"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/registro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="192dp"
+            android:layout_height="19dp"
             android:text="¿No tienes cuenta? Regístrate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.723" />
+            app:layout_constraintVertical_bias="0.715" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
