@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class BBDD(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -19,17 +20,22 @@ class BBDD(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
         private const val COLUMN_PASSWORD = "password"
     }
 
+
     override fun onCreate(db: SQLiteDatabase) {
+        Log.e("BBDD", "🔥 onCreate() ejecutado - Creando la base de datos")
+
         val createTable = """
-            CREATE TABLE $TABLE_USERS (
-                $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COLUMN_USERNAME TEXT UNIQUE,
-                $COLUMN_EMAIL TEXT UNIQUE,
-                $COLUMN_PASSWORD TEXT
-            );
-        """.trimIndent()
+        CREATE TABLE $TABLE_USERS (
+            $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            $COLUMN_USERNAME TEXT UNIQUE,
+            $COLUMN_EMAIL TEXT UNIQUE,
+            $COLUMN_PASSWORD TEXT
+        );
+    """.trimIndent()
+
         db.execSQL(createTable)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
