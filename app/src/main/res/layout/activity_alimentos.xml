@@ -15,9 +15,8 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_food"
-        android:contentDescription="Ícono alimentos"
-        android:layout_marginBottom="16dp" />
+            android:contentDescription="Ícono alimentos"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"

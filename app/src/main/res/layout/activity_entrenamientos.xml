@@ -15,7 +15,6 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/entrenamiento_icon"
             android:contentDescription="Icono entrenamiento"
             android:layout_marginBottom="16dp" />
 
