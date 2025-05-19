@@ -21,10 +21,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Inicializa la base de datos y fuerza su creación
+        val dbHelper = BBDD(this)
+        val db = dbHelper.writableDatabase
+        db.close() // Cierra la conexión para forzar la creación
 
         // Muestra la ruta de la base de datos
-        val dbHelper = BBDD(this)
-        val rutaDB = dbHelper.getDatabasePath(this) // Aquí pasamos el contexto
+        val rutaDB = getDatabasePath("usuarios.db").absolutePath
         Log.d("RutaDB", "Ruta de la base de datos: $rutaDB")
 
         // Inicializa los elementos del layout
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
     private fun login() {
         val email = loginEmail?.text.toString()
