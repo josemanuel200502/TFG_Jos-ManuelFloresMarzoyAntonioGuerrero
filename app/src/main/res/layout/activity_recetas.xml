@@ -129,6 +129,17 @@
                     android:backgroundTint="@color/verde_oscuro"
                     android:textColor="@android:color/white"/>
 
+                <Button
+                    android:id="@+id/btnBackRecetas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Volver"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/verde_oscuro"
+                    android:padding="12dp"
+                    android:layout_marginTop="20dp"/>
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

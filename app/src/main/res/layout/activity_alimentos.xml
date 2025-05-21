@@ -92,12 +92,14 @@
 
         <!-- Botón volver -->
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnBackAlimentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Volver"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
+            android:textColor="@android:color/white"
             android:background="@drawable/rounded_button" />
+
+
+
     </LinearLayout>
 </ScrollView>

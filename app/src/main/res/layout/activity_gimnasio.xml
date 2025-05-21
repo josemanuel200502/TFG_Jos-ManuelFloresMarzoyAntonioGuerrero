@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"> <!-- ✅ Gris claro real aplicado -->
+    android:background="#F5F5F5">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,96 +21,35 @@
             android:gravity="center"
             android:paddingBottom="24dp" />
 
-        <!-- Tarjeta 1 -->
+        <!-- Contenedor dinámico para gimnasios -->
         <LinearLayout
+            android:id="@+id/gimnasiosContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#E3F2FD"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp">
+            android:padding="16dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Smart Gym Central"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@android:drawable/ic_menu_mylocation"
-                    android:contentDescription="Ubicación" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Av. Central 123"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Tarjeta 2 -->
-        <LinearLayout
+        <!-- Botón para buscar gimnasios -->
+        <Button
+            android:id="@+id/btnFind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#E3F2FD"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp">
+            android:text="Encontrar gimnasios"
+            android:background="@drawable/rounded_button"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Urban Fitness Norte"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@android:drawable/ic_menu_mylocation"
-                    android:contentDescription="Ubicación" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Calle Norte 456"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Botón ver mapa (azul claro y ancho completo) -->
+        <!-- Botón ver mapa -->
         <Button
             android:id="@+id/btnMapa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ver en mapa"
+            android:background="@drawable/rounded_button"
             android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_button" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Botón volver -->
         <Button
@@ -118,8 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Volver"
+            android:background="@drawable/rounded_button"
             android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:background="@drawable/rounded_button" />
+            android:padding="12dp"/>
     </LinearLayout>
 </ScrollView>

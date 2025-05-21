@@ -38,6 +38,21 @@
         android:layout_height="wrap_content"
         android:text="Agregar recordatorio"
         android:layout_marginTop="24dp"
+        android:backgroundTint="@color/verde_oscuro"
         app:layout_constraintTop_toBottomOf="@id/emptyMsg"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnBackRecordatorios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/verde_oscuro"
+        android:padding="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/btnNuevoRecordatorio"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

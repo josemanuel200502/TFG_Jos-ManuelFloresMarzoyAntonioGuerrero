@@ -24,7 +24,7 @@ class AppActivity : AppCompatActivity() {
         youtubeWebView.webViewClient = WebViewClient()
         val webSettings: WebSettings = youtubeWebView.settings
         webSettings.javaScriptEnabled = true
-        val videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        val videoUrl = "https://youtu.be/ABeAgM7fZAI?si=_uISV6lVleNTy4aZ"
         youtubeWebView.loadUrl(videoUrl)
 
         // Botones de la barra inferior
@@ -60,6 +60,8 @@ class AppActivity : AppCompatActivity() {
             // Alimentos (Tracker)
             startActivity(Intent(this, Alimentos::class.java))
         }
+
+
 
     }
 }
