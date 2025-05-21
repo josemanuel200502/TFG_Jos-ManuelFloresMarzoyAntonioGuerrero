@@ -1,4 +1,11 @@
 package com.example.buildyourbd
 
-class Ejercicios {
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class Ejercicios : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_ejercicios)
+    }
 }
