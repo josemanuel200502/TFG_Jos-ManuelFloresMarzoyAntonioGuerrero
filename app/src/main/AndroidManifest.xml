@@ -2,13 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permisos de ubicación -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="TU_API_KEY_AQUI" />
 
     <application
         android:allowBackup="true"
@@ -20,17 +16,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuildYourBD"
         tools:targetApi="31">
+
+        <!-- API Key de Google Maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="TU_API_KEY_AQUI" />
+
+        <!-- Pantalla de login / launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"/>
-    </application>
+        <!-- Registro de usuario -->
+        <activity android:name=".RegisterActivity" />
 
+        <!-- Login alternativo -->
+        <activity android:name=".LoginActivity" />
+
+        <!-- Primera pantalla tras login -->
+        <activity android:name=".AppActivity" />
+
+
+        <!-- Otras Activities -->
+        <activity android:name=".Entrenamientos" />
+        <activity android:name=".Ejercicios" />
+        <activity android:name=".Alimentos" />
+
+    </application>
 </manifest>
