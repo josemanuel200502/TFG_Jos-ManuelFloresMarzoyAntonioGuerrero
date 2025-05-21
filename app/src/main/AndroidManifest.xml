@@ -46,6 +46,9 @@
         <activity android:name=".Entrenamientos" />
         <activity android:name=".Ejercicios" />
         <activity android:name=".Alimentos" />
+        <activity android:name=".RecetasActivity" />
+        <activity android:name=".ComunidadActivity" />
+        <activity android:name=".RecordatoriosActivity" />
 
     </application>
 </manifest>
