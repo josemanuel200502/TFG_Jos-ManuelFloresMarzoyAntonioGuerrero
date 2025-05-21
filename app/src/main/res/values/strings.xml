@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BuildYourBD</string>
+    <string name="desc_volver">Volver</string>
+    <string name="title_crear_cuenta">Crear cuenta</string>
+    <string name="label_nombre">Nombre</string>
+    <string name="hint_nombre">Tu Nombre Aquí</string>
+    <string name="label_email">Correo electrónico</string>
+    <string name="hint_email">tunombre@gmail.com</string>
+    <string name="label_contrasenia">Contraseña</string>
+    <string name="hint_contrasenia">Contraseña</string>
+    <string name="label_repetir_contrasenia">Repetir contraseña</string>
+    <string name="hint_repetir_contrasenia">Repetir contraseña</string>
+    <string name="btn_registrarse">Registrarse</string>
+    <string name="err_campos_vacios">Por favor llena todos los campos</string>
+    <string name="err_contrasenas_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="registro_exitoso">Registro exitoso</string>
 </resources>
