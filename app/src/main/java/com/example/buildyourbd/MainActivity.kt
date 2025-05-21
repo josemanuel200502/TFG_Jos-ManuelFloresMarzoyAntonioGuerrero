@@ -1,7 +1,8 @@
 package com.example.buildyourbd
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,7 +19,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)  // Cambiado aquí
+        setContentView(R.layout.activity_main)
+
+        // Inicializa la base de datos y fuerza su creación
+        val dbHelper = BBDD(this)
+        val db = dbHelper.writableDatabase
+        db.close() // Cierra la conexión para forzar la creación
+
+        // Muestra la ruta de la base de datos
+        val rutaDB = getDatabasePath("usuarios.db").absolutePath
+        Log.d("RutaDB", "Ruta de la base de datos: $rutaDB")
 
         // Inicializa los elementos del layout
         loginEmail = findViewById(R.id.loginEmail)
@@ -31,21 +41,30 @@ class MainActivity : AppCompatActivity() {
         entrarButton?.setOnClickListener { login() }
         invitadoButton?.setOnClickListener { loginAsGuest() }
         buttonGoogle?.setOnClickListener { loginWithGoogle() }
-        registro?.setOnClickListener { goToRegister() }
+        registro?.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 
     private fun login() {
         val email = loginEmail?.text.toString()
         val password = loginPass?.text.toString()
+
+        // Obtener credenciales guardadas
+        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val savedEmail = sharedPreferences.getString("email", null)
+        val savedPassword = sharedPreferences.getString("contrasena", null)
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor ingresa todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (email == "usuario@dominio.com" && password == "123456") {
-            Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
-            // Navega a la pantalla principal o dashboard aquí
+        if (email == savedEmail && password == savedPassword) {
+            Toast.makeText(this, "Bienvenido, $savedEmail", Toast.LENGTH_SHORT).show()
+            // Aquí puedes navegar a la pantalla principal
         } else {
             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
         }
@@ -57,9 +76,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun loginWithGoogle() {
         Toast.makeText(this, "Iniciando sesión con Google", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun goToRegister() {
-        Toast.makeText(this, "Redirigiendo a registro", Toast.LENGTH_SHORT).show()
     }
 }

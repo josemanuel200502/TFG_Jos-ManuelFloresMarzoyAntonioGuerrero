@@ -1,6 +1,7 @@
 package com.example.buildyourbd
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -54,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun iniciarSesion(){
         var nombre:String?=findViewById<EditText>(R.id.loginEmail).text.toString()
         val pass=findViewById<EditText>(R.id.loginPass).text.toString()
