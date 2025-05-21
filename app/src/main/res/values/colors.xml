@@ -12,4 +12,6 @@
     <color name="grisClaro">#E2E4E2</color>
     <color name="botonAdmin">#6B9C6D</color>
     <color name="azul_cielo">#87CEEB</color>
+    <color name="gray_700">#616161</color>
+
 </resources>
