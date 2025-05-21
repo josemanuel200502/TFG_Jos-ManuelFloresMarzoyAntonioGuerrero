@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/communityScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/verde_suave"
+    tools:context=".ComunidadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Encabezado con icono y título -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="24dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:srcCompat="@drawable/ic_recipe"
+                app:tint="@color/verde_oscuro"
+                android:contentDescription="@string/desc_comunidad_icon"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/titleComunidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_comunidad"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/verde_oscuro" />
+        </LinearLayout>
+
+        <!-- Descripción breve -->
+        <TextView
+            android:id="@+id/subtitleComunidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_comunidad"
+            android:textSize="16sp"
+            android:textColor="@color/gris_oscuro"
+            android:paddingBottom="16dp" />
+
+        <!-- Tarjeta de bienvenida -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_comunidad_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/verde_oscuro" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_comunidad_desc"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:textColor="@color/gris_oscuro" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- RecyclerView para posts -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerComunidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:contentDescription="@string/desc_recycler_comunidad"
+            tools:ignore="SpeakableTextPresent" />
+
+        <!-- Botón para agregar nueva publicación -->
+        <Button
+            android:id="@+id/btnAgregarPublicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_agregar_publicacion"
+            android:backgroundTint="@color/verde_oscuro"
+            android:textColor="@android:color/white"
+            android:minHeight="48dp"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

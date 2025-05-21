@@ -13,48 +13,53 @@ class AppActivity : AppCompatActivity() {
 
     private lateinit var youtubeWebView: WebView
     private lateinit var botonInicio: ImageButton
-    // Ya no usamos botonAjustes hasta que tengas SettingsActivity
-    // private lateinit var botonAjustes: ImageButton
+    private lateinit var botonAjustes: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app)
 
+        // Inicializamos WebView
         youtubeWebView = findViewById(R.id.youtubeWebView)
-        botonInicio     = findViewById(R.id.botonInicio)
-        // botonAjustes    = findViewById(R.id.botonAjustes)
-
-        // Configurar WebView
         youtubeWebView.webViewClient = WebViewClient()
         val webSettings: WebSettings = youtubeWebView.settings
         webSettings.javaScriptEnabled = true
         val videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"
         youtubeWebView.loadUrl(videoUrl)
 
-        // Barra inferior
+        // Botones de la barra inferior
+        botonInicio = findViewById(R.id.botonInicio)
+        botonAjustes = findViewById(R.id.botonAjustes)
+
         botonInicio.setOnClickListener {
+            // Recarga el video
             youtubeWebView.loadUrl(videoUrl)
         }
-        // botonAjustes.setOnClickListener {
-        //     startActivity(Intent(this, SettingsActivity::class.java))
-        // }
-
-        // Grid de botones
+        // Botones del GridLayout
         findViewById<Button>(R.id.boton1).setOnClickListener {
+            // Entrenamientos
             startActivity(Intent(this, Entrenamientos::class.java))
         }
 
-        // Los botones 2, 3 y 4 quedan deshabilitados hasta crear sus Activities
-        // findViewById<Button>(R.id.boton2).setOnClickListener { /* Recetas */ }
-        // findViewById<Button>(R.id.boton3).setOnClickListener { /* Comunidad */ }
-        // findViewById<Button>(R.id.boton4).setOnClickListener { /* Recordatorios */ }
+        findViewById<Button>(R.id.boton2).setOnClickListener {
+            // Recetas
+            startActivity(Intent(this, RecetasActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.boton3).setOnClickListener {
+            // Comunidad
+            startActivity(Intent(this, ComunidadActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.boton4).setOnClickListener {
+            // Recordatorios
+            startActivity(Intent(this, RecordatoriosActivity::class.java))
+        }
 
         findViewById<Button>(R.id.boton5).setOnClickListener {
+            // Alimentos (Tracker)
             startActivity(Intent(this, Alimentos::class.java))
         }
 
-        findViewById<Button>(R.id.boton6).setOnClickListener {
-            startActivity(Intent(this, Gimnasios::class.java))
-        }
     }
 }

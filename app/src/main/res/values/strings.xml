@@ -22,6 +22,13 @@
     <string name="desc_receta_smoothie">Imagen de Smoothie de Frutos Rojos</string>
     <string name="btn_ver_detalle">Ver detalle</string>
     <string name="title_recetas">Recetas</string>
+    <string name="title_comunidad">Comunidad</string>
+    <string name="subtitle_comunidad">Únete a la conversación y comparte tus logros</string>
+    <string name="btn_agregar_publicacion">Nueva publicación</string>
+    <string name="desc_recycler_comunidad">Lista de publicaciones de la comunidad</string>
+    <string name="desc_comunidad_icon">Icono de la comunidad</string>
+    <string name="welcome_comunidad_title">Bienvenido a la comunidad!</string>
+    <string name="welcome_comunidad_desc">Aquí encontrarás publicaciones recientes de otros usuarios, consejos y novedades.</string>
 
 
 </resources>
