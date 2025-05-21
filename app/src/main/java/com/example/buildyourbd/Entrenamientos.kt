@@ -9,3 +9,5 @@ class Entrenamientos : AppCompatActivity() {
         setContentView(R.layout.activity_entrenamientos)
     }
 }
+
+

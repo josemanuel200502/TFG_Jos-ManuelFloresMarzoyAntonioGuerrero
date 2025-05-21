@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorOnPrimary">
+
+    <!-- Base del plato -->
+    <path
+        android:fillColor="@color/verde_oscuro"
+        android:pathData="M4,3h16c0.55,0 1,0.45 1,1v2c0,0.55 -0.45,1 -1,1H4c-0.55,0 -1,-0.45 -1,-1V4c0,-0.55 0.45,-1 1,-1z"/>
+
+    <!-- Línea divisoria -->
+    <path
+        android:fillColor="@color/verde_oscuro"
+        android:pathData="M3,8h18v2H3V8z"/>
+
+    <!-- Palillo izquierdo -->
+    <path
+        android:fillColor="@color/verde_oscuro"
+        android:pathData="M6,12h2v7H6v-7z"/>
+
+    <!-- Palillo derecho -->
+    <path
+        android:fillColor="@color/verde_oscuro"
+        android:pathData="M16,12h2v7h-2v-7z"/>
+
+    <!-- Bandeja -->
+    <path
+        android:fillColor="@color/verde_oscuro"
+        android:pathData="M2,19h20v2H2v-2z"/>
+</vector>

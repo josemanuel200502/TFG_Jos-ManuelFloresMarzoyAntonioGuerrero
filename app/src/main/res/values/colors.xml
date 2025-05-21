@@ -13,5 +13,8 @@
     <color name="botonAdmin">#6B9C6D</color>
     <color name="azul_cielo">#87CEEB</color>
     <color name="gray_700">#616161</color>
+    <color name="verde_oscuro">#2E7D32</color>
+    <color name="verde_suave">#E8F5E9</color>
+
 
 </resources>
