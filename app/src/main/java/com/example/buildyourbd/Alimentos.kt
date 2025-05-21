@@ -1,4 +1,11 @@
 package com.example.buildyourbd
 
-class Alimentos {
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class Alimentos : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_alimentos)
+    }
 }

@@ -2,60 +2,46 @@ package com.example.buildyourbd
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    private var loginEmail: EditText? = null
-    private var loginPass: EditText? = null
-    private var entrarButton: Button? = null
-    private var buttonGoogle: Button? = null
-    private var invitadoButton: Button? = null
-    private var registro: TextView? = null
+    private lateinit var loginEmail: EditText
+    private lateinit var loginPass: EditText
+    private lateinit var entrarButton: Button
+    private lateinit var invitadoButton: Button
+    private lateinit var registro: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Inicializa la base de datos y fuerza su creación
+        // Inicializar DB (esto parece solo para crearla por primera vez)
         val dbHelper = BBDD(this)
-        val db = dbHelper.writableDatabase
-        db.close() // Cierra la conexión para forzar la creación
+        dbHelper.writableDatabase.close()
 
-        // Muestra la ruta de la base de datos
-        val rutaDB = getDatabasePath("usuarios.db").absolutePath
-        Log.d("RutaDB", "Ruta de la base de datos: $rutaDB")
-
-        // Inicializa los elementos del layout
+        // Vinculación con elementos de UI
         loginEmail = findViewById(R.id.loginEmail)
         loginPass = findViewById(R.id.loginPass)
         entrarButton = findViewById(R.id.entrarButton)
         invitadoButton = findViewById(R.id.invitadoButton)
         registro = findViewById(R.id.registro)
 
-        // Configura los listeners
-        entrarButton?.setOnClickListener { login() }
-        invitadoButton?.setOnClickListener { loginAsGuest() }
-        buttonGoogle?.setOnClickListener { loginWithGoogle() }
-        registro?.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+        // Listeners
+        entrarButton.setOnClickListener { login() }
+        invitadoButton.setOnClickListener { loginAsGuest() }
+        registro.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
-
     private fun login() {
-        val email = loginEmail?.text.toString()
-        val password = loginPass?.text.toString()
+        val email = loginEmail.text.toString()
+        val password = loginPass.text.toString()
 
-        // Obtener credenciales guardadas
-        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val savedEmail = sharedPreferences.getString("email", null)
-        val savedPassword = sharedPreferences.getString("contrasena", null)
+        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val savedEmail = prefs.getString("email", null)
+        val savedPassword = prefs.getString("contrasena", null)
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor ingresa todos los campos", Toast.LENGTH_SHORT).show()
@@ -64,17 +50,16 @@ class MainActivity : AppCompatActivity() {
 
         if (email == savedEmail && password == savedPassword) {
             Toast.makeText(this, "Bienvenido, $savedEmail", Toast.LENGTH_SHORT).show()
-            // Aquí puedes navegar a la pantalla principal
+            startActivity(Intent(this, AppActivity::class.java))
+            finish()
         } else {
             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun loginAsGuest() {
-        Toast.makeText(this, "Iniciando sesión como invitado", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun loginWithGoogle() {
-        Toast.makeText(this, "Iniciando sesión con Google", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Entrando como invitado", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, AppActivity::class.java))
+        finish()
     }
 }
