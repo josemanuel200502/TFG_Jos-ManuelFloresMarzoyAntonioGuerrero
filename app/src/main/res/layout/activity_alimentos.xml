@@ -27,57 +27,46 @@
             android:textColor="#000000"
             android:paddingBottom="16dp" />
 
-        <!-- Sección de comidas -->
-        <LinearLayout
+        <!-- Campo de entrada para alimentos -->
+        <EditText
+            android:id="@+id/inputAlimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:elevation="2dp">
+            android:hint="Nombre del alimento"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Desayuno: Avena y frutas"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:paddingBottom="8dp" />
+        <EditText
+            android:id="@+id/inputCalorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Calorías"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:inputType="number"
+            android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Almuerzo: Ensalada + Pollo"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:paddingBottom="8dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cena: Sopa y pan integral"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:paddingBottom="8dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Snacks: Yogur"
-                android:textSize="16sp"
-                android:textColor="#000000" />
-        </LinearLayout>
+        <!-- Lista de alimentos guardados -->
+        <TextView
+            android:id="@+id/txtListaAlimentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No has registrado alimentos aún."
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:paddingBottom="16dp"/>
 
         <!-- Calorías totales -->
         <TextView
+            android:id="@+id/txtTotalCalorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calorías hoy: 1,750 kcal"
+            android:text="Calorías hoy: 0 kcal"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:paddingBottom="24dp" />
+            android:paddingBottom="24dp"/>
 
         <!-- Botón agregar alimento -->
         <Button
@@ -85,10 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar alimento"
-            android:textColor="#FFFFFF"
+            android:textColor="@android:color/white"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_button" />
+            android:background="@drawable/rounded_button"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Botón volver -->
         <Button
@@ -97,9 +86,7 @@
             android:layout_height="wrap_content"
             android:text="Volver"
             android:textColor="@android:color/white"
-            android:background="@drawable/rounded_button" />
-
-
+            android:background="@drawable/rounded_button"/>
 
     </LinearLayout>
 </ScrollView>

@@ -6,115 +6,135 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
-import android.os.Looper
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.location.*
-import java.util.Locale
+import android.content.SharedPreferences
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 class GimnasiosActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var gimnasiosHelper: GimnasiosHelper
-
-    private var userLat = 0.0
-    private var userLon = 0.0
-    private var currentGyms: List<Gimnasio> = emptyList()
+    private var ubicacionUsuario: Location? = null // Guardar ubicación del usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gimnasio)
 
-        gimnasiosHelper = GimnasiosHelper()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        val container = findViewById<LinearLayout>(R.id.gimnasiosContainer)
-        val btnFind = findViewById<Button>(R.id.btnFind)
-        val btnMapa = findViewById<Button>(R.id.btnMapa)
-        val btnBack = findViewById<Button>(R.id.btnBack)
-
-        btnFind.setOnClickListener { buscarGimnasios(container) }
-        btnMapa.setOnClickListener {
-            if (currentGyms.isNotEmpty()) abrirMapa()
-            else mensaje("No hay gimnasios para mostrar en el mapa")
+        val btnEncontrar = findViewById<Button>(R.id.btnFind) // Ajustado al `id` correcto
+        btnEncontrar.setOnClickListener {
+            solicitarUbicacion()
         }
-        btnBack.setOnClickListener { finish() }
+
+        val btnVerMapa = findViewById<Button>(R.id.btnMapa) // Ajustado al `id` correcto
+        btnVerMapa.setOnClickListener {
+            abrirGoogleMaps()
+        }
+
+        val btnVolver = findViewById<Button>(R.id.btnBack) // Ajustado al `id` correcto
+        btnVolver.setOnClickListener {
+            finish() // Cierra la actividad y regresa
+        }
     }
 
-    private fun buscarGimnasios(container: LinearLayout) {
+    private fun solicitarUbicacion() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
-            return
-        }
-
-        fusedLocationClient.lastLocation.addOnSuccessListener { loc: Location? ->
-            if (loc != null) {
-                userLat = loc.latitude
-                userLon = loc.longitude
-                filtrarYMostrar(container)
-            } else {
-                solicitarUbicacionActual(container)
-            }
-        }.addOnFailureListener { e -> mensaje("Error al obtener ubicación: ${e.message}") }
-    }
-
-    private fun solicitarUbicacionActual(container: LinearLayout) {
-        val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 1000)
-            .setMaxUpdates(1)
-            .build()
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
-            mensaje("Permiso de ubicación no concedido")
-            return
-        }
-
-        fusedLocationClient.requestLocationUpdates(request, object : LocationCallback() {
-            override fun onLocationResult(res: LocationResult) {
-                res.lastLocation?.let { loc ->
-                    userLat = loc.latitude
-                    userLon = loc.longitude
-                    filtrarYMostrar(container)
-                } ?: mensaje("No se pudo obtener ubicación actual")
-                fusedLocationClient.removeLocationUpdates(this)
-            }
-        }, Looper.getMainLooper())
-    }
-
-    private fun filtrarYMostrar(container: LinearLayout) {
-        currentGyms = gimnasiosHelper.filtrarGimnasiosCercanos(userLat, userLon)
-        container.removeAllViews()
-
-        if (currentGyms.isNotEmpty()) {
-            currentGyms.forEach { gym ->
-                val distancia = String.format(Locale.US, "%.2f km", gimnasiosHelper.calcularDistancia(userLat, userLon, gym.latitud, gym.longitud))
-                val tv = TextView(this).apply {
-                    text = "${gym.nombre} – $distancia\n${gym.direccion}"
-                    setPadding(0, 8, 0, 8)
-                }
-                container.addView(tv)
-            }
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            obtenerUbicacion()
         } else {
-            mensaje("No hay gimnasios cercanos en tu ubicación")
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1
+            )
         }
     }
 
-    private fun abrirMapa() {
-        val gymsUri = currentGyms.joinToString("|") { "${it.latitud},${it.longitud}(${Uri.encode(it.nombre)})" }
-        val uriString = "geo:$userLat,$userLon?q=$gymsUri"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uriString)).apply { setPackage("com.google.android.apps.maps") }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (intent.resolveActivity(packageManager) != null) startActivity(intent)
-        else mensaje("No se encontró aplicación de mapas")
+        if (requestCode == 1) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                obtenerUbicacion() // Solo si el permiso se concedió
+            } else {
+                Toast.makeText(
+                    this,
+                    "Debes conceder permisos para usar esta función",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
-    private fun mensaje(texto: String) {
-        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show()
+
+    private fun obtenerUbicacion() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Permiso de ubicación no concedido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val locationRequest = com.google.android.gms.location.LocationRequest.create().apply {
+            priority = com.google.android.gms.location.Priority.PRIORITY_HIGH_ACCURACY
+            interval = 5000 // Solicita actualización cada 5 segundos
+        }
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, object : com.google.android.gms.location.LocationCallback() {
+            override fun onLocationResult(locationResult: com.google.android.gms.location.LocationResult) {
+                val location = locationResult.lastLocation
+                if (location != null) {
+                    android.util.Log.d("UBICACION", "Latitud actualizada: ${location.latitude}, Longitud: ${location.longitude}")
+
+                    val prefs = getSharedPreferences("GimnasioPrefs", MODE_PRIVATE)
+                    val editor = prefs.edit()
+                    editor.putFloat("latitude", location.latitude.toFloat())
+                    editor.putFloat("longitude", location.longitude.toFloat())
+                    editor.apply()
+
+                    Toast.makeText(this@GimnasiosActivity, "Ubicación actualizada: ${location.latitude}, ${location.longitude}", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@GimnasiosActivity, "Ubicación no disponible, inténtalo de nuevo", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }, null)
+    }
+
+
+
+
+
+    private fun abrirGoogleMaps() {
+        val prefs = getSharedPreferences("GimnasioPrefs", MODE_PRIVATE)
+        val latitude = prefs.getFloat("latitude", 0f)
+        val longitude = prefs.getFloat("longitude", 0f)
+
+        if (latitude == 0f || longitude == 0f) {
+            Toast.makeText(
+                this,
+                "Error: la ubicación no está guardada. Intenta nuevamente.",
+                Toast.LENGTH_LONG
+            ).show()
+            solicitarUbicacion()
+            return
+        }
+
+        val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?q=gimnasios cerca de mí")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+
+        // 🔥 Asegurar que la actividad no se cierre
+        mapIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(mapIntent)
     }
 }

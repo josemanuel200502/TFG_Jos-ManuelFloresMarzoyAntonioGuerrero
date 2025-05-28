@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+
     // Desugaring para APIs de Java 8+
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
 

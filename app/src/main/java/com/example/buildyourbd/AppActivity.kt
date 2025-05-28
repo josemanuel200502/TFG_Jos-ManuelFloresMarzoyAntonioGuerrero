@@ -24,8 +24,10 @@ class AppActivity : AppCompatActivity() {
         youtubeWebView.webViewClient = WebViewClient()
         val webSettings: WebSettings = youtubeWebView.settings
         webSettings.javaScriptEnabled = true
-        val videoUrl = "https://youtu.be/ABeAgM7fZAI?si=_uISV6lVleNTy4aZ"
+        val videoUrl = "https://www.youtube.com/embed/ABeAgM7fZAI?autoplay=1&controls=0&rel=0&modestbranding=1"
         youtubeWebView.loadUrl(videoUrl)
+
+
 
         // Botones de la barra inferior
         botonInicio = findViewById(R.id.botonInicio)
@@ -58,7 +60,12 @@ class AppActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.boton5).setOnClickListener {
             // Alimentos (Tracker)
-            startActivity(Intent(this, Alimentos::class.java))
+            startActivity(Intent(this, AlimentosActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.boton6).setOnClickListener {
+            // Encuentra mi gym
+            startActivity(Intent(this, GimnasiosActivity::class.java))
         }
 
 

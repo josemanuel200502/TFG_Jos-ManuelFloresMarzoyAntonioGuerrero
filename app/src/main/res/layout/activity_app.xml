@@ -98,7 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:text="Encuentra tu Gym"
+            android:text="Encuentra mi Gym"
             android:layout_margin="8dp"
             android:backgroundTint="@color/azul_cielo" />
     </GridLayout>

@@ -38,6 +38,8 @@
             android:background="@drawable/rounded_button"
             android:textColor="#FFFFFF"
             android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_marginBottom="16dp"/>
 
         <!-- Botón ver mapa -->

@@ -92,26 +92,3 @@ class BBDD(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DA
 
 }
 
-/*
-Uso en Activities:
-
-val db = BBDD(this)
-if (!db.isUserExists(username, email)) {
-    val added = db.addUser(username, email, password)
-    if (added) {
-        // registro OK
-    } else {
-        // error al guardar
-    }
-} else {
-    // usuario o email ya existe
-}
-
-// Para login:
-val db = BBDD(this)
-if (db.authenticate(identifier, password)) {
-    // login exitoso
-} else {
-    // credenciales inválidas
-}
-*/

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,71 +36,147 @@
             android:textColor="#333333"
             android:paddingBottom="24dp" />
 
-        <!-- Rutinas -->
-        <TextView
+        <!-- Cardio básico -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cardio básico"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:drawableStart="@android:drawable/arrow_down_float"
-            android:drawablePadding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textCardio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Cardio básico"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btnDesplegarCardio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contenedorCardio"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical"
             android:padding="12dp"
-            android:gravity="center_vertical"
-            android:contentDescription="Entrenamiento Cardio básico" />
+            android:layout_height="200dp">
 
-        <TextView
+            <WebView
+                android:id="@+id/webViewCardio"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+            <Button
+                android:id="@+id/btnCompletarCardio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marcar como completado"/>
+        </LinearLayout>
+
+        <!-- Fuerza en casa -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fuerza en casa"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:drawableStart="@android:drawable/arrow_down_float"
-            android:drawablePadding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textFuerza"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Fuerza en casa"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btnDesplegarFuerza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contenedorFuerza"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical"
             android:padding="12dp"
-            android:gravity="center_vertical"
-            android:contentDescription="Entrenamiento Fuerza en casa" />
+            android:layout_height="200dp">
 
-        <TextView
+            <WebView
+                android:id="@+id/webViewFuerza"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+            <Button
+                android:id="@+id/btnCompletarFuerza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marcar como completado"/>
+        </LinearLayout>
+
+        <!-- Estiramientos -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estiramientos"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:drawableStart="@android:drawable/arrow_down_float"
-            android:drawablePadding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textEstiramientos"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Estiramientos"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btnDesplegarEstiramientos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contenedorEstiramientos"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical"
             android:padding="12dp"
-            android:gravity="center_vertical"
-            android:contentDescription="Entrenamiento Estiramientos" />
+            android:layout_height="200dp">
 
-        <!-- Progreso -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Progreso: 2/3 completados"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="4dp" />
+            <WebView
+                android:id="@+id/webViewEstiramientos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
 
+            <Button
+                android:id="@+id/btnCompletarEstiramientos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marcar como completado"/>
+        </LinearLayout>
+
+        <!-- Barra de progreso correctamente ubicada -->
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:progress="66"
             android:max="100"
             android:progressTint="#1976D2"
             android:layout_marginBottom="24dp" />
-
-        <!-- Botón iniciar -->
-        <Button
-            android:id="@+id/btnIniciarEntrenamiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Iniciar entrenamiento"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_button" />
 
         <!-- Botón volver -->
         <Button

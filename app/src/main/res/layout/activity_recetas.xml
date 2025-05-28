@@ -66,6 +66,7 @@
                     android:textColor="#444444" />
 
                 <Button
+                    android:id="@+id/btnVerDetalleEnsalada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_ver_detalle"
@@ -117,12 +118,9 @@
                     android:textColor="#444444" />
 
                 <Button
+                    android:id="@+id/btnVerDetalleSmoothie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
                     android:text="@string/btn_ver_detalle"
                     android:layout_gravity="end"
                     android:layout_margin="12dp"
